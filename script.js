@@ -8,7 +8,8 @@ $(document).ready(function() {
 function getInfo(obj) {
   var status = "";
   var name = "";
-  var link = "https://www.twitch.tv/";
+  var link = "";
+  var nLink = "https://www.twitch.tv/";
   var img = "";
 
   for (var i = 0; i < obj.length; i++) {
@@ -18,12 +19,12 @@ function getInfo(obj) {
       if (obj[i].stream != null) {
         status = obj[i].stream.status;
         name = obj[i].stream.display_name;
-        link += name;
+        link = nLink + name;
         img = obj[i].stream.logo;
       } else { //if it's offline, change 'status' to 'Offline'
         status = "Offline";
         name = obj[i].display_name;
-        link += name;
+        link = nLink + name;
         img = "";
       }
     } else if (obj[i].hasOwnProperty("error")) {
@@ -34,6 +35,7 @@ function getInfo(obj) {
       img="";
     }
     addInfo(name, status, link, img);
+    addStyle();
     console.log(status + " " + link);
   }
 }
@@ -41,12 +43,9 @@ function getInfo(obj) {
 // A function to add the info the web page by html code
 function addInfo(name, status, link, img) {
   var output = $("#output");
-
+  
   output.append('<img class ="logo img-responsive" src =' + img + ' />' + '<p class="name"> ' + name + '</p>');
   output.append('<a class ="link" href="' + link + '" target="_blank">' +'<p>' + status + '</p></a>');
-  output.append();
-
-  addStyle();
 }
 
 function addStyle() {

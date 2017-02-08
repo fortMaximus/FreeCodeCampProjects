@@ -17,6 +17,10 @@ body {
   background-color: #0f145b;
 }
 
+.green-text{
+  color: green;
+}
+
 #made-by{
   margin-top: 60px;
   font-size: 1em;
